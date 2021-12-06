@@ -1,4 +1,5 @@
 ##test variable and value, remidiate if either is incorrect
+##from Active directory class
 set-location -Path "env:"
 set-location -Path "HKCU:\Environment\"
     #see if variable exists
