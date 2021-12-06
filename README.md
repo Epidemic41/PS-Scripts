@@ -1,2 +1,2 @@
 # Scripts
-Various scripts for school and other projects
+Various scripts for school, compititions, and other projects
