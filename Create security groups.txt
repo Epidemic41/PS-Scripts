@@ -1,0 +1,30 @@
+﻿#David Lee, Lorezen, 10/29/21, assigment 8
+    #this script is modified from this walkthrough
+        #https://www.alitajran.com/create-active-directory-users-from-csv-with-powershell/#h-check-the-csv-file
+
+# Import active directory module for running AD cmdlets
+Import-Module ActiveDirectory
+  
+# Store the data from csv in the $ADUsers variable
+$ADsg = Import-Csv C:\Users\winSever19\Desktop\Assignment 6 PS1 script 2.csv -Delimiter ","
+
+# Loop through each row containing user details in the CSV file
+foreach ($sg in $ADsg) {
+
+    #Read user data from each field in each row and assign the data to a variable as below
+    $Name = $sg.Name
+    $Description = $sg.Description
+    $Scope = $sg.Scope
+    $Category = $sg.Category
+    $OUPath = "OU=users, OU=Accounts, DC=DLee, DC=local" #This field refers to the OU the user account is to be created in
+
+    $Secuity= "Security"
+    $Distributed = "Distributed"
+
+#if security
+{
+New-ADGroup -Name "$name" -Description $Description -GroupScope $Scope -GroupCategory $Category -Path $OUPath
+}
+}
+
+#if distributed
