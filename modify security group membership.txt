@@ -1,0 +1,41 @@
+# Store the data from csv in the $ADUsers variable
+$ADUsers = Import-Csv C:\Users\winSever19\Desktop\assignment6script3.csv -Delimiter ","
+
+# Loop through each row containing user details in the CSV file
+foreach ($User in $ADUsers) 
+{
+
+    #Read user data from each field in each row and assign the data to a variable as below
+    $GroupName = $User.GroupName
+    $username = $User.username
+    $Action = $User.action
+    $add = "Add"
+    $remove= "Remove"
+    
+       if ($add -eq $user.action)
+    {
+ 
+            Add-ADGroupMember `
+                -Identity $Groupname `
+                -Members $username `
+           
+
+            # If user is created, show message.
+            Write-Host "The user account $username is added to $Groupname." -ForegroundColor Cyan
+            Read-Host -Prompt "tried to add $username"
+    }
+        if ($Remove -eq $user.action)
+    {
+        Remove-ADGroupMember -Identity $GroupName -Members $username `
+        
+        # If user is created, show message.
+        Write-Host "The user account $username is removed from $Groupname." -ForegroundColor Cyan
+        Read-Host -Prompt "tried to remove $username "
+    }
+        #returns invalid $user.action
+        #if (($user.action -ne $Remove) -or ($user.action -ne $Add))
+        #{
+       # Write-Host "The user account $username 's action: $user.action is invalid." -ForegroundColor Cyan
+        #}
+}
+Read-Host -Prompt "Press Enter to exit"
