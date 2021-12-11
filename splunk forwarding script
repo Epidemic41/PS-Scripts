@@ -1,0 +1,9 @@
+#!/bin/bash
+apt install ./splunk.deb && \
+    /opt/splunkforwarder/bin/splunk enable boot-start && \
+    /opt/splunkforwarder/bin/splunk start && \
+    /opt/splunkforwarder/bin/splunk enable listen 9997 && \
+    /opt/splunkforwarder/bin/splunk add forward-server 192.168.2.5:9997 && \
+    /opt/splunkforwarder/bin/splunk list forward-server && \
+    /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog -index main -sourcetype %syslog% && \
+    /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype %auth% && \
