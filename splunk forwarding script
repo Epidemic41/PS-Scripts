@@ -1,9 +1,10 @@
-#!/bin/bash
-apt install ./splunk.deb && \
+wget -O splunkforwarder-8.2.3-cd0848707637-linux-2.6-amd64.deb 'https://download.splunk.com/products/universalforwarder/releases/8.2.3/linux/splunkforwarder-8.2.3-cd0848707637-linux-2.6-amd64.deb'
+
+apt install ./splunkforwarder-8.2.3-cd0848707637-linux-2.6-amd64.deb && \
     /opt/splunkforwarder/bin/splunk enable boot-start && \
     /opt/splunkforwarder/bin/splunk start && \
     /opt/splunkforwarder/bin/splunk enable listen 9997 && \
-    /opt/splunkforwarder/bin/splunk add forward-server 192.168.2.5:9997 && \
+    /opt/splunkforwarder/bin/splunk add forward-server 0.0.0.0:9997 && \
     /opt/splunkforwarder/bin/splunk list forward-server && \
     /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog -index main -sourcetype %syslog% && \
     /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype %auth% && \
