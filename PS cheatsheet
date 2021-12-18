@@ -1,0 +1,2 @@
+#unblock file to give script permission to run
+Unblock-File -Path C:\Users\David\Desktop\DeepBlueCLI-master\*
