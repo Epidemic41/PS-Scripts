@@ -1,2 +1,5 @@
 #unblock file to give script permission to run
 Unblock-File -Path C:\Users\David\Desktop\DeepBlueCLI-master\*
+
+#PS install
+https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
