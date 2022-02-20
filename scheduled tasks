@@ -1,0 +1,9 @@
+PSscript for ccdc qualifiers
+
+$action = new-scheduledtaskaction -execute 'Powershell.exe' -argument 'install-module windowsupdateprovider; get-wulist; install-windowsupdate'
+
+$trigger = new-scheduledtasktrigger -Daily -at 2am
+
+register-scheduledtask -action $action -trigger $trigger -Taskname "DownloadAndInstallUpdatesAt2AM"
+
+https://devblogs.microsoft.com/scripting/use-powershell-to-create-scheduled-tasks/
