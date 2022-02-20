@@ -7,3 +7,4 @@ $trigger = new-scheduledtasktrigger -Daily -at 2am
 register-scheduledtask -action $action -trigger $trigger -Taskname "DownloadAndInstallUpdatesAt2AM"
 
 https://devblogs.microsoft.com/scripting/use-powershell-to-create-scheduled-tasks/
+https://www.techulk.com/download-and-install-windows-updates-with-powershell/ ##only use PS module comandlets
