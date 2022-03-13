@@ -7,4 +7,4 @@ apt install ./splunkforwarder-8.2.5-77015bc7a462-linux-2.6-amd64.deb && \
     /opt/splunkforwarder/bin/splunk add forward-server 0.0.0.0:9997 && \
     /opt/splunkforwarder/bin/splunk list forward-server && \
     /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog -index main -sourcetype %syslog% && \
-    /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype %auth% && \
+    /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype %auth%
