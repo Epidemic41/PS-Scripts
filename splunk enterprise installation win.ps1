@@ -1,5 +1,5 @@
 cd \users\$env:USERNAME\Desktop
-
+$ProgressPreference = 'SilentlyContinue'
 curl -o SplunkinstallMSI1.msi https://download.splunk.com/products/splunk/releases/8.2.3/windows/splunk-8.2.3-cd0848707637-x64-release.msi -UseBasicParsing
 
 msiexec.exe /i splunk-8.2.3-cd0848707637-x64-release.msi 
