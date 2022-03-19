@@ -1,5 +1,5 @@
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-
+$ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest -Uri "https://download.splunk.com/products/universalforwarder/releases/8.2.5/windows/splunkforwarder-8.2.5-77015bc7a462-x64-release.msi" -OutFile "splunkforwarder.msi"
 
 msiexec.exe /i splunkforwarder.msi RECEIVING_INDEXER="<IP>:<1997>" WINEVENTLOG_SEC_ENABLE=1 WINEVENTLOG_SYS_ENABLE=1 AGREETOLICENSE=Yes /quiet
