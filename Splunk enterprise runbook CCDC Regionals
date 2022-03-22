@@ -1,0 +1,55 @@
+splunk enterpris runbook
+Manual splunk install
+password and username is set during installation
+
+cd \users\$env:USERNAME\Desktop
+$ProgressPreference = 'SilentlyContinue'
+curl -o SplunkinstallMSI1.msi https://download.splunk.com/products/splunk/releases/8.2.3/windows/splunk-8.2.3-cd0848707637-x64-release.msi -UseBasicParsing
+
+New-NetFirewallRule -DisplayName "splunk forwarder inbound 9997" -Direction Inbound -LocalPort 9997 -Protocol TCP -Action allow
+
+get enterprise machine's ip
+    ____.____.____.____
+        inform teammates so they can run forwarding scripts
+
+Setting->forwarding and receving->recieve data-> add new
+    port 9997
+
+Hand out scripts to homies
+
+Setting->Data inputs->Local Event log collection
+    add local sec and sys logs
+    index to main
+    
+
+
+
+
+
+
+
+//bad dont use
+
+msiexec.exe /i ./SplunkinstallMSI2.msi 
+AGREETOLICENSE=Yes 
+INSTALLDIR="C:\Program Files\Splunk" 
+SPLUNKD_PORT=8089 
+WEB_PORT=8000 
+WINEVENTLOG_APP_ENABLE=1 
+WINEVENTLOG_SEC_ENABLE=1 
+WINEVENTLOG_SYS_ENABLE=1 
+WINEVENTLOG_FWD_ENABLE=1 
+WINEVENTLOG_SET_ENABLE=1 
+LAUNCHSPLUNK=1 
+INSTALL_SHORTCUT=1 
+SPLUNKUSERNAME=YourSideAdmin 
+SPLUNKPASSWORD=Ple@seB36ent@l
+
+
+
+
+
+
+
+
+
