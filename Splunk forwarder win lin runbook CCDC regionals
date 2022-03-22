@@ -1,0 +1,47 @@
+splunk forwarder runbook
+-------------------------------------------------------------------------------------------------
+Debian
+-------------------------------------------------------------------------------------------------
+sudo -i
+wget -O splunkforwarder-8.2.5-77015bc7a462-linux-2.6-amd64.deb "https://download.splunk.com/products/universalforwarder/releases/8.2.5/linux/splunkforwarder-8.2.5-77015bc7a462-linux-2.6-amd64.deb"
+
+apt install ./splunkforwarder-8.2.5-77015bc7a462-linux-2.6-amd64.deb && \
+    /opt/splunkforwarder/bin/splunk start && \
+    /opt/splunkforwarder/bin/splunk enable boot-start && \
+    /opt/splunkforwarder/bin/splunk enable listen 9997 && \
+    /opt/splunkforwarder/bin/splunk add forward-server 192.168.71.143:9997 && \
+    /opt/splunkforwarder/bin/splunk add monitor /var/log/syslog -index main -sourcetype %syslog% && \
+    /opt/splunkforwarder/bin/splunk add monitor /var/log/auth.log -index main -sourcetype %auth% && \
+    /opt/splunkforwarder/bin/splunk restart
+
+will promt you 2 yes or no questions, say yes to both
+will promt for username and password, these are local to the indivisaul forwarder. enter and record creds
+
+-------------------------------------------------------------------------------------------------
+Windows
+-------------------------------------------------------------------------------------------------
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+cd \users\$env:USERNAME\Desktop
+$ProgressPreference = 'SilentlyContinue'
+Invoke-WebRequest -Uri "https://download.splunk.com/products/universalforwarder/releases/8.2.5/windows/splunkforwarder-8.2.5-77015bc7a462-x64-release.msi" -OutFile "splunkforwarder.msi"
+
+msiexec.exe /i splunkforwarder.msi AGREETOLICENSE=Yes SPLUNKUSERNAME=NotYourAverageAdmin SPLUNKPASSWORD=NotYourAverageAdmin RECEIVING_INDEXER="192.168.71.143:9997" LAUNCHSPLUNK=1 SERVICESTARTTYPE=auto /quiet
+start-sleep -seconds 10
+
+cd \'Program Files'\SplunkUniversalForwarder\bin/
+./splunk enable listen 9997
+./splunk add monitor \windows\System32\winevt\Logs\setup.evtx
+./splunk add monitor \windows\System32\winevt\Logs\System.evtx
+start-sleep -seconds 5
+
+\'Program Files'\SplunkUniversalForwarder\bin/splunk restart
+
+after the 2nd 
+
+
+
+
+on premise splunk enterpres instance
+
+
+
