@@ -1,0 +1,38 @@
+splunk cli cheatsheet
+
+
+--------------------------------------------------------------------
+Test install
+--------------------------------------------------------------------
+display boot-start config
+    ./splunk display boot-start
+
+    ./splunk list monitor
+
+    ./splunk list forward-server
+        sudo ./splunk list forward-server
+
+--------------------------------------------------------------------
+other commands
+--------------------------------------------------------------------
+    Run the following command to uninstall the forwarder.
+        dpkg -r splunkforwarder
+    (Optional) Run the following command to purge all universal forwarder files, including configuration files.
+        dpkg -P splunkforwarder
+    
+stop forwarder
+    cd  \'Program Files'\SplunkUniversalForwarder\bin
+    .\splunk stop
+
+    cd $SPLUNK_HOME/bin/splunk stop 
+    /opt/splunkforwarder/bin/
+        ./splunk stop
+
+Run the Microsoft Installer to perform the uninstallation.
+    msiexec /x splunkuniversalforwarder-<...>-x86-release.msi
+        just us 'add or remove program'
+
+
+
+        
+
