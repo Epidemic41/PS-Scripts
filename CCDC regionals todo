@@ -1,0 +1,42 @@
+CCDC splunk TODO:
+
+alpine
+centos
+solarious
+    bsd
+    gentoo arch
+    nix
+    opensuse
+
+package
+    yum 
+    dnf
+logs location
+
+
+        create throwaway account
+    test linux forwarder script
+        ask thads recomendation
+        WTF, not forwarding
+    test win forwarder script
+        system and security logs
+    see 'add data-select forwarders'
+        see 'learn more'
+        create server class?
+        traffic not being sent out on :9997
+
+
+    test goplunk alerts
+        windows
+        linux
+
+test in thoth
+    set up on linux machine
+        manual splunk enterprise
+            use throwaway account
+    test linux forwarder script
+    test win forwarder script
+    test goplunk alerts
+        windows
+        linux
+pray
