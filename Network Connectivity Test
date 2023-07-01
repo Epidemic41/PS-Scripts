@@ -1,0 +1,44 @@
+#Why have you forsaken me ISP?
+ping bing with extra steps
+#by David Lee
+#made for when my isp is mad at me
+#clears dns cache,  pings a target site, and displays the results
+#if you use this, update lines ~41-49 to update the dumpfile
+
+
+Clear-DnsClientCache #clear dns cache as a precaution
+
+#if I forget this is running, this will prevent it from going on forever
+
+#checks and or sets target
+if ($Target -eq $null) { #if variable does not exist, make variable
+    New-Variable -Name "Target" -Value "Bing.com" 
+    #Write-Host "target variable created"
+        ##uncomment for debugging
+}elseif ($Target -ne $null) {
+        Write-Host "target site is"$Target -ForegroundColor Gray} 
+
+#counts total pings
+if ($Counter -eq $null) { #if variable does not exist, make variable
+    New-Variable -Name "Counter" -Value 0 
+    #Write-Host "counter variable created"
+        ##uncomment for debugging
+}elseif ($Counter -ne $null) {  #reset counter to 0  
+    $Counter = 0 
+    #Write-Host "counter variable reset"
+        ##uncomment for debugging
+}
+
+  
+while ($Counter -lt 500) { #if I forget this is running, this will prevent it from going on forever
+Start-Sleep -Seconds 3
+ping bing.com > C:\Users\David\Documents\pingBingDump.txt #temporary dumpfile 
+Get-Content C:\Users\David\Documents\pingBingDump.txt -First 2 | Write-Host -ForegroundColor White
+#if run into errors, diagnose by changing line 4 > to >> and see what is being written in pingBingDump
+get-date | Write-Host -ForegroundColor Gray 
+$Counter +=1
+Write-Host count: $Counter -ForegroundColor Red
+}
+write-host "Max ping count reached"
+
+#https://devblogs.microsoft.com/scripting/powertip-read-first-line-of-file-with-powershell/
